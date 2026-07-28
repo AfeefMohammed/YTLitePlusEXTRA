@@ -280,7 +280,7 @@ jobs:
         run: |
           cd YouSlider
           git checkout 5034aec7384c6f4082dc9a45fd51aa63f3c7ac16
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ADDITIONAL_CFLAGS="-Wno-error=incompatible-pointer-types"
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
 
       - name: Build Alderis
