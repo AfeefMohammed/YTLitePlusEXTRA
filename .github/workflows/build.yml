@@ -126,8 +126,13 @@ jobs:
       - name: Clone YouPiP
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouPiP.git
     
+      #- name: Clone YTUHD
+        #run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
       - name: Clone YTUHD
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTUHD.git
+        run: git clone --quiet https://github.com/Tonwalter888/YTUHD.git
+
+      - name: Debug - show recent Filter.x changes
+        run: cd YTUHD && git log -p -5 -- Filter.x
            
       - name: Clone Return-YouTube-Dislikes
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
@@ -160,8 +165,11 @@ jobs:
       - name: Clone Alderis
         run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
 
+      #- name: Clone YouSlider
+        #run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+
       - name: Clone YouSlider
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSlider.git
+        run: git clone --quiet https://github.com/PoomSmart/YouSlider.git
 
       - name: Clone YouChooseQuality
         run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
@@ -262,9 +270,16 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
 
+      #- name: Build YouSlider
+        #run: |
+          #cd YouSlider
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/youslider.deb
+
       - name: Build YouSlider
         run: |
           cd YouSlider
+          git checkout 5034aec7384c6f4082dc9a45fd51aa63f3c7ac16
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youslider.deb
 
