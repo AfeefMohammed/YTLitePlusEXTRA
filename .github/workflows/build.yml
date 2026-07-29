@@ -137,8 +137,8 @@ jobs:
       #- name: Debug - show recent Filter.x changes
         #run: cd YTUHD && git log -p -5 -- Filter.x
            
-      - name: Clone Return-YouTube-Dislikes
-        run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
+      #- name: Clone Return-YouTube-Dislikes
+        #run: git clone --quiet --depth=1 https://github.com/PoomSmart/Return-YouTube-Dislikes.git
 
       - name: Clone YouGroupSettings
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
@@ -155,9 +155,9 @@ jobs:
       - name: Clone YouSpeed
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouSpeed.git
 
-      - name: Clone DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
+      #- name: Clone DontEatMyContent
+        #if: ${{ inputs.demc }}
+        #run: git clone --quiet --depth=1 https://github.com/therealFoxster/DontEatMyContent.git
 
       - name: Clone YouMute
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouMute.git
@@ -174,8 +174,8 @@ jobs:
       - name: Clone YouSlider
         run: git clone --quiet https://github.com/PoomSmart/YouSlider.git
 
-      - name: Clone YouChooseQuality
-        run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
+      #- name: Clone YouChooseQuality
+        #run: git clone --quiet https://github.com/PoomSmart/YouChooseQuality.git
 
       - name: Clone YTSilentVote
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTSilentVote.git
@@ -183,11 +183,11 @@ jobs:
       - name: Clone YouShare
         run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouShare.git
 
-      - name: Clone Gonerino
-        run: git clone --quiet --depth=1 https://github.com/castdrian/Gonerino.git
+      #- name: Clone Gonerino
+        #run: git clone --quiet --depth=1 https://github.com/castdrian/Gonerino.git
 
-      - name: Clone YTweaks
-        run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
+      #- name: Clone YTweaks
+        #run: git clone --quiet --depth=1 https://github.com/fosterbarnes/YTweaks.git
 
       - name: Clone YouGetCaption
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGetCaption.git
@@ -218,11 +218,11 @@ jobs:
           #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           #mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
 
-      - name: Build Return-YouTube-Dislikes
-        run: |
-          cd Return-YouTube-Dislikes
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ryd.deb
+      #- name: Build Return-YouTube-Dislikes
+        #run: |
+          #cd Return-YouTube-Dislikes
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/ryd.deb
 
       - name: Build YouGroupSettings
         run: |
@@ -254,12 +254,12 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youspeed.deb
 
-      - name: Build DontEatMyContent
-        if: ${{ inputs.demc }}
-        run: |
-          cd DontEatMyContent
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/demc.deb
+      #- name: Build DontEatMyContent
+        #if: ${{ inputs.demc }}
+        #run: |
+          #cd DontEatMyContent
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/demc.deb
 
       - name: Build YouMute
         run: |
@@ -293,11 +293,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 ARCHS=arm64
           mv packages/*.deb ${{ github.workspace }}/alderis.deb
 
-      - name: Build YouChooseQuality
-        run: |
-          cd YouChooseQuality
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/youchoose.deb
+      #- name: Build YouChooseQuality
+        #run: |
+          #cd YouChooseQuality
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/youchoose.deb
 
       - name: Build YTSilentVote
         run: |
@@ -311,11 +311,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youshare.deb
           
-      - name: Build Gonerino
-        run: |
-          cd Gonerino
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/gonerino.deb
+      #- name: Build Gonerino
+        #run: |
+          #cd Gonerino
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/gonerino.deb
 
       - name: Build YouGetCaption
         run: |
@@ -323,11 +323,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygc.deb
 
-      - name: Build YTweaks
-        run: |
-          cd YTweaks
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
+      #- name: Build YTweaks
+        #run: |
+          #cd YTweaks
+          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          #mv packages/*.deb ${{ github.workspace }}/ytweaks.deb
 
       - name: Build YTFlags
         run: |
