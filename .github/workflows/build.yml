@@ -131,6 +131,9 @@ jobs:
       #- name: Clone YTUHD
         #run: git clone --quiet https://github.com/Tonwalter888/YTUHD.git
 
+      - name: Clone YTUHD
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
+      
       #- name: Debug - show recent Filter.x changes
         #run: cd YTUHD && git log -p -5 -- Filter.x
            
@@ -209,11 +212,11 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youpip.deb    
 
-      #- name: Build YTUHD
-        #run: |
-          #cd YTUHD
-          #make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          #mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
+      - name: Build YTUHD
+        run: |
+          cd YTUHD
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/ytuhd.deb
 
       - name: Build Return-YouTube-Dislikes
         run: |
@@ -329,7 +332,7 @@ jobs:
       - name: Build YTFlags
         run: |
           cd YTFlags
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless ADDITIONAL_CFLAGS="-Wno-error=incompatible-pointer-types"
           mv packages/*.deb ${{ github.workspace }}/ytflags.deb
 
       - name: Build IAmYouTube
