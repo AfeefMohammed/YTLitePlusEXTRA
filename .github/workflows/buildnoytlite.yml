@@ -341,6 +341,10 @@ jobs:
         if: ${{ inputs.enable_tap_to_seek }}
         run: |
           cd YTTapToSeek
+
+          # Fix the uppercase letters in the control file
+          sed -i '' 's/^Package: .*$/Package: com.bhackel.yttaptoseek/' control
+          
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/yttaptoseek.deb
 
