@@ -33,6 +33,12 @@ on:
         required: true
         default: true
 
+      enable_tap_to_seek:
+        description: "YTTapToSeek"
+        type: boolean
+        required: true
+        default: true
+
       enable_ygc:
         description: "YouGetCaption"
         type: boolean
@@ -215,6 +221,10 @@ jobs:
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
+      - name: Clone YTTapToSeek
+        if: ${{ inputs.enable_tap_to_seek }}
+        run: git clone --quiet --depth=1 https://github.com/bhackel/YTTapToSeek.git
+
       - name: Clone Alderis
         if: ${{ inputs.enable_Alderis }}
         run: git clone --quiet --depth=1 https://github.com/hbang/Alderis.git
@@ -326,6 +336,13 @@ jobs:
           cd YouLoop
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
+
+      - name: Build YTTapToSeek
+        if: ${{ inputs.enable_tap_to_seek }}
+        run: |
+          cd YTTapToSeek
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/yttaptoseek.deb
 
       - name: Build YouSlider
         if: ${{ inputs.enable_Alderis }}
