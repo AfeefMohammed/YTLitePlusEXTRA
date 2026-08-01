@@ -33,8 +33,8 @@ on:
         required: true
         default: true
 
-      enable_tap_to_seek:
-        description: "YTTapToSeek"
+      enable_my_yt_features:
+        description: "MyYTFeatures"
         type: boolean
         required: true
         default: true
@@ -221,9 +221,9 @@ jobs:
       - name: Clone YouLoop
         run: git clone --quiet --depth=1 https://github.com/bhackel/YouLoop.git
 
-      - name: Clone YTTapToSeek
-        if: ${{ inputs.enable_tap_to_seek }}
-        run: git clone --quiet --depth=1 https://github.com/bhackel/YTTapToSeek.git
+      - name: Clone MyYTFeatures
+        if: ${{ inputs.enable_my_yt_features }}
+        run: git clone --quiet --depth=1 https://github.com/AfeefMohammed/MyYTFeatures.git
 
       - name: Clone Alderis
         if: ${{ inputs.enable_Alderis }}
@@ -337,16 +337,12 @@ jobs:
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/youloop.deb
 
-      - name: Build YTTapToSeek
-        if: ${{ inputs.enable_tap_to_seek }}
+      - name: Build MyYTFeatures
+        if: ${{ inputs.enable_my_yt_features }}
         run: |
-          cd YTTapToSeek
-
-          # Fix the uppercase letters in the control file
-          sed -i '' 's/^Package: .*$/Package: com.bhackel.yttaptoseek/' control
-          
+          cd MyYTFeatures
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
-          mv packages/*.deb ${{ github.workspace }}/yttaptoseek.deb
+          mv packages/*.deb ${{ github.workspace }}/myytfeatures.deb
 
       - name: Build YouSlider
         if: ${{ inputs.enable_Alderis }}
